@@ -1,14 +1,14 @@
 "use strict"
 
 import ancientsData from "./ancients.js";
-console.log(ancientsData);
+
 // карты //
 import greenCards from "./mythicCards/green/index.js";
-console.log(greenCards);
+
 import brownCards from "./mythicCards/brown/index.js";
-console.log(brownCards);
+
 import blueCards from "./mythicCards/blue/index.js";
-console.log(blueCards);
+
 
 
 
@@ -685,6 +685,7 @@ ShubNiggurathDeckExtraHard();
 // в результате deck принимает значение нужного массива колоды//
 function createDeck() {
     AzathothLevels.addEventListener('click', (e) => {
+        deck = []
         if (e.target.classList.contains('level-1')) {
             AzathothDeckExtraEasy();
         }
@@ -700,12 +701,13 @@ function createDeck() {
         if (e.target.classList.contains('level-5')) {
             AzathothDeckExtraHard();
         }
-        console.log(deck)
+        // console.log(deck)
         openDeck();
         // return deck;
     })
 
     CthulthuLevels.addEventListener('click', (e) => {
+        deck = []
         if (e.target.classList.contains('level-1')) {
             CthulthuDeckExtraEasy();
         }
@@ -721,12 +723,13 @@ function createDeck() {
         if (e.target.classList.contains('level-5')) {
             CthulthuDeckExtraHard();
         }
-        console.log(deck)
+        // console.log(deck)
         openDeck()
         // return deck;
     })
 
     IogSothothLevels.addEventListener('click', (e) => {
+        deck = []
         if (e.target.classList.contains('level-1')) {
             IogSothothDeckExtraEasy();
         }
@@ -748,6 +751,7 @@ function createDeck() {
     })
 
     ShubNiggurathLevels.addEventListener('click', (e) => {
+        deck = []
         if (e.target.classList.contains('level-1')) {
             ShubNiggurathDeckExtraEasy();
         }
@@ -763,7 +767,7 @@ function createDeck() {
         if (e.target.classList.contains('level-5')) {
            ShubNiggurathDeckExtraHard();
         }
-        console.log(deck)
+        // console.log(deck)
         openDeck()
         // return deck;
     })
@@ -780,9 +784,11 @@ function openDeck() {
          BACK.classList.remove('empty');
     }
     CARDS.forEach( card => {card.style.opacity = "1"; card.style.visibility = "visible"})
-
+    
+}
 
     BACK.addEventListener('click', () => {
+        console.log('deck1111',deck)
         if (deck.length > 0) {
             showNewCard();
         }
@@ -791,14 +797,13 @@ function openDeck() {
             CARDS.forEach( card => {card.style.opacity = "0"; card.style.visibility = "hidden"})
         }
         })
-}
 
 function showNewCard() {
     let currentCard = deck.pop();
     const img = new Image();
     FRONT.append(img);
     img.classList.add('deck-card');
-    console.log(currentCard);
+    //console.log('currentCard',currentCard);
     img.src = currentCard.cardFace;
 }
 
