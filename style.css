@@ -1,0 +1,285 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    color: antiquewhite;
+}
+.wrapper-start {
+    background: url('/assets/img/start.jpeg');
+  
+}
+.wrapper-Azathoth {
+    background: url('/assets/img/azatoth.jpg');
+}
+.wrapper-Cthulthu {
+    background: url('/assets/img/Cthulhu.png');
+}
+.wrapper-IogSothoth {
+    background: url('/assets/img/Yog-Sothoth.jpeg');
+}
+.wrapper-ShubNiggurath {
+    background: url('/assets/img/Shub-niggurat.jpeg');
+}
+
+
+.wrapper {
+    /* height: 100vh;
+    width: 100vw; */
+    padding: 20px;
+    transition: all 1s ease-in-out;  
+    display: flex;
+    flex-direction: column;
+
+    -webkit-animation-duration: 3s; 
+    animation-duration: 3s;
+    -webkit-animation-fill-mode: both; 
+    animation-fill-mode: both; 
+    -webkit-animation-name: fadeIn; 
+    animation-name: fadeIn;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+/* https://dwweb.ru/page/css/024_plavnoe_poyavlenie_bloka_css_pri_zagruzke_stranitsyi.html */
+
+@-webkit-keyframes fadeIn { 
+    0% {opacity: 0;} 
+    100% {opacity: 1;} 
+    } 
+    @keyframes fadeIn { 
+    0% {opacity: 0;} 
+    100% {opacity: 1;} 
+    }
+
+
+    .ancient-cards {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .ancient-card {
+        width: 220px;
+        height: 285px;
+        position: relative; 
+        transform-style: preserve-3d;
+        transition: 0.6s;
+    } 
+
+    .ancient-card:hover {
+        cursor: pointer;
+        /* transform: rotateY(180deg); */
+    }
+
+    .flip-ancient {
+        transform: rotateY(180deg);
+    }
+
+    .Azathoth-front {
+        background: url('/assets/Ancients/Azathoth.png');
+    }
+    .Azathoth-back,
+    .Azathoth-difficulties {
+        background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('/assets/Ancients/Azathoth.png') ;
+    }
+    .Cthulthu-front {
+        background: url('/assets/Ancients/Cthulthu.png');
+    }
+    .Cthulthu-back,
+    .Cthulthu-difficulties {
+        background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('/assets/Ancients/Cthulthu.png');
+    }
+    .IogSothoth-front {
+        background: url('/assets/Ancients/IogSothoth.png');
+    }
+    .IogSothoth-back,
+    .IogSothoth-difficulties {
+        background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('/assets/Ancients/IogSothoth.png');
+    }
+    .ShubNiggurath-front {
+        background: url('/assets/Ancients/ShubNiggurath.png');
+    }
+    .ShubNiggurath-back,
+    .ShubNiggurath-difficulties {
+        background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('/assets/Ancients/ShubNiggurath.png');
+    }
+
+    .ancient-front, 
+    .ancient-back,
+    .difficulties {
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        backface-visibility: hidden;
+    }
+
+.ancient-front {
+    transform: rotateY(0);
+    z-index: 2;
+}
+
+.ancient-front:hover .difficulties {
+    opacity: 1;
+    visibility: visible;
+}
+
+.difficulties {
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: all .3s ease-in-out;  
+}
+
+.level {
+    text-align: center;
+    padding: 10px 0;
+    width: 90%;
+    border: 1px solid rgb(250, 235, 215);
+    transition: all .3s ease-in-out;  
+}
+.level:hover {
+    cursor: pointer;
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+    box-shadow: rgba(250, 235, 215, 0.5) 0px 30px 60px -12px inset, rgba(250, 235, 215, 0.3) 0px 18px 36px -18px inset;
+}
+
+
+
+.ancient-back {
+    transform: rotateY(180deg);
+}
+
+.circles,
+.ancient-back-wrapper,
+.stage {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+}
+.ancient-back-wrapper {
+    flex-direction: column;
+    padding-top: 10px;
+}
+.stage {
+    flex-direction: column;   
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.green {
+    background-color: green;
+}
+.brown {
+    background-color: #764035;
+}
+.blue {
+    background-color: blue;
+}
+
+.number {
+    font-size: 1.5rem;
+}
+
+.decks{
+    align-self: center;
+    display: flex;
+    align-items: flex-end;
+    margin-top: 70px;
+    gap: 160px;
+}
+
+.back {
+    opacity: 0;
+    visibility: hidden;
+    position: relative;
+    width: 230px;
+    height: 330px;
+    background-color: rgba(0, 0, 0, 0.517);
+    transition: all .3s ease-in-out;   
+    /* transform: rotate(-30deg) skew(25deg); */
+}
+
+.back-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mix img:nth-child(5) {
+    transform: translate(50px, -50px);
+    opacity: 1;
+}
+.mix img:nth-child(4) {
+    transform: translate(40px, -40px);
+    opacity: .8;
+}
+.mix img:nth-child(3) {
+    transform: translate(30px, -30px);
+    opacity: .6;
+}
+.mix img:nth-child(2) {
+    transform: translate(20px, -20px);
+    opacity: .4;
+}
+.mix img:nth-child(1) {
+    transform: translate(10px, -10px);
+    opacity: .4;
+}
+
+.front {
+    width: 230px;
+    height: 330px;
+}
+
+
+
+.back:hover {
+    box-shadow: rgba(222, 284, 235, 0.55) 0px 54px 55px, rgba(222, 284, 235, 0.42) 0px -12px 30px, rgba(222, 284, 235, 0.42) 0px 4px 6px, rgba(222, 284, 235, 0.47) 0px 12px 13px, rgba(222, 284, 235, 0.39) 0px -3px 5px;
+}
+
+.empty {
+    box-shadow: rgba(222, 284, 235, 0.55) 0px 54px 55px, rgba(222, 284, 235, 0.42) 0px -12px 30px, rgba(222, 284, 235, 0.42) 0px 4px 6px, rgba(222, 284, 235, 0.47) 0px 12px 13px, rgba(222, 284, 235, 0.39) 0px -3px 5px;
+}
+
+.deck-card {
+    /* border: 1px solid rgb(222, 184, 135); */
+    position: absolute;
+    transition: 1s;
+    width: 230px;
+    height: 330px;
+}
+
+.card-back {
+    cursor: pointer;
+}
+
+.card-back:active {
+    transform: scale(1.1);
+}
+
+
