@@ -11,20 +11,20 @@ body {
     color: antiquewhite;
 }
 .wrapper-start {
-    background: url('/assets/img/start.jpeg');
+    background: url('assets/img/start.jpeg');
   
 }
 .wrapper-Azathoth {
-    background: url('/assets/img/azatoth.jpg');
+    background: url('assets/img/azatoth.jpg');
 }
 .wrapper-Cthulthu {
-    background: url('/assets/img/Cthulhu.png');
+    background: url('assets/img/Cthulhu.png');
 }
 .wrapper-IogSothoth {
-    background: url('/assets/img/Yog-Sothoth.jpeg');
+    background: url('assets/img/Yog-Sothoth.jpeg');
 }
 .wrapper-ShubNiggurath {
-    background: url('/assets/img/Shub-niggurat.jpeg');
+    background: url('assets/img/Shub-niggurat.jpeg');
 }
 
 
@@ -85,32 +85,32 @@ body {
     }
 
     .Azathoth-front {
-        background: url('/assets/Ancients/Azathoth.png');
+        background: url('assets/Ancients/Azathoth.png');
     }
     .Azathoth-back,
     .Azathoth-difficulties {
-        background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('/assets/Ancients/Azathoth.png') ;
+        background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('assets/Ancients/Azathoth.png') ;
     }
     .Cthulthu-front {
-        background: url('/assets/Ancients/Cthulthu.png');
+        background: url('assets/Ancients/Cthulthu.png');
     }
     .Cthulthu-back,
     .Cthulthu-difficulties {
-        background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('/assets/Ancients/Cthulthu.png');
+        background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('assets/Ancients/Cthulthu.png');
     }
     .IogSothoth-front {
-        background: url('/assets/Ancients/IogSothoth.png');
+        background: url('assets/Ancients/IogSothoth.png');
     }
     .IogSothoth-back,
     .IogSothoth-difficulties {
-        background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('/assets/Ancients/IogSothoth.png');
+        background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('assets/Ancients/IogSothoth.png');
     }
     .ShubNiggurath-front {
-        background: url('/assets/Ancients/ShubNiggurath.png');
+        background: url('assets/Ancients/ShubNiggurath.png');
     }
     .ShubNiggurath-back,
     .ShubNiggurath-difficulties {
-        background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('/assets/Ancients/ShubNiggurath.png');
+        background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('assets/Ancients/ShubNiggurath.png');
     }
 
     .ancient-front, 
