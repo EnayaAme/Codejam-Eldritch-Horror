@@ -10,20 +10,16 @@ import brownCards from "./mythicCards/brown/index.js";
 import blueCards from "./mythicCards/blue/index.js";
 
 
+            window.onload = function () {
+                // переворачиваем карточки древних //
+                flipAncient();
+                // создаем колоды //
+                createDeck();
+                // переворачиваем колоду //
+                openDeck();
+                BACK.addEventListener('click', deactivateStage);
 
-
-
-
-
-
-window.onload = function () {
-    // переворачиваем карточки древних //
-    flipAncient();
-    // создаем колоды //
-    createDeck();
-
-
-}
+            }
 
 ////////////////////////////////////  КОНСТАНТЫ  ////////////////////////////////////
 
@@ -45,21 +41,48 @@ const BACK = document.querySelector('.back');
 const CARDS = document.querySelectorAll('.card-back');
 const FRONT = document.querySelector('.front')
 
+const AzathothStage1 = Array.from(document.querySelectorAll('.Azathoth-1'));
+const AzathothStage2 = Array.from(document.querySelectorAll('.Azathoth-2'));
+const AzathothStage3 = Array.from(document.querySelectorAll('.Azathoth-3'));
+const CthulthuStage1 = Array.from(document.querySelectorAll('.Cthulthu-1'));
+const CthulthuStage2 = Array.from(document.querySelectorAll('.Cthulthu-2'));
+const CthulthuStage3 = Array.from(document.querySelectorAll('.Cthulthu-3'));
+const IogSothothStage1 = Array.from(document.querySelectorAll('.IogSothoth-1'));
+const IogSothothStage2 = Array.from(document.querySelectorAll('.IogSothoth-2'));
+const IogSothothStage3 = Array.from(document.querySelectorAll('.IogSothoth-3'));
+const ShubNiggurathStage1 = Array.from(document.querySelectorAll('.ShubNiggurath-1'));
+const ShubNiggurathStage2 = Array.from(document.querySelectorAll('.ShubNiggurath-2'));
+const ShubNiggurathStage3 = Array.from(document.querySelectorAll('.ShubNiggurath-3'));
+console.log(AzathothStage1)
 
+const AzathothGreen = document.querySelectorAll('.Azathoth-green');
+const AzathothBrown = document.querySelectorAll('.Azathoth-brown');
+const AzathothBlue = document.querySelectorAll('.Azathoth-blue');
+const CthulthuGreen = document.querySelectorAll('.Cthulthu-green');
+const CthulthuBrown = document.querySelectorAll('.Cthulthu-brown');
+const CthulthuBlue = document.querySelectorAll('.Cthulthu-blue');
+const IogSothothGreen = document.querySelectorAll('.IogSothoth-green');
+const IogSothothBrown = document.querySelectorAll('.IogSothoth-brown');
+const IogSothothBlue = document.querySelectorAll('.IogSothoth-blue');
+const ShubNiggurathGreen = document.querySelectorAll('.ShubNiggurath-green');
+const ShubNiggurathBrown = document.querySelectorAll('.ShubNiggurath-brown');
+const ShubNiggurathBlue = document.querySelectorAll('.ShubNiggurath-blue');
+
+const stage1 = document.querySelectorAll('.stage-1');
+const stage2 = document.querySelectorAll('.stage-2');
+const stage3 = document.querySelectorAll('.stage-3');
 
 
 ////////////////////////////////////  ПЕРЕМЕННЫЕ  ////////////////////////////////////
+
 let deck;
-
-
-
-
 
 ////////////////////////////////////  ПЕРЕВОРАЧИВАЕМ КАРТОЧКИ ДРЕВНИХ  ////////////////////////////////////
 
 function flipAzathoth() {
     AzathothLevels.addEventListener('click', (e) => {
         if (e.target.classList.contains('level')) {
+            fillCounterAzathoth();
             Azathoth.classList.add('flip-ancient');
             Cthulthu.classList.remove('flip-ancient');
             IogSothoth.classList.remove('flip-ancient');
@@ -79,10 +102,10 @@ function flipAzathoth() {
         }
     })
 }
-
 function flipCthulthu() {
     CthulthuLevels.addEventListener('click', (e) => {
         if (e.target.classList.contains('level')) {
+            fillCounterCthulthu();
             Cthulthu.classList.add('flip-ancient');
             Azathoth.classList.remove('flip-ancient');
             IogSothoth.classList.remove('flip-ancient');
@@ -102,10 +125,10 @@ function flipCthulthu() {
         }
     })
 }
-
 function flipIogSothoth() {
     IogSothothLevels.addEventListener('click', (e) => {
         if (e.target.classList.contains('level')) {
+            fillCounterIogSothoth();
             IogSothoth.classList.add('flip-ancient');
             Cthulthu.classList.remove('flip-ancient');
             Azathoth.classList.remove('flip-ancient');
@@ -125,10 +148,10 @@ function flipIogSothoth() {
         }
     })
 }
-
 function flipShubNiggurath() {
     ShubNiggurathLevels.addEventListener('click', (e) => {
         if (e.target.classList.contains('level')) {
+            fillCounterShubNiggurath();
             ShubNiggurath.classList.add('flip-ancient');
             Cthulthu.classList.remove('flip-ancient');
             Azathoth.classList.remove('flip-ancient');
@@ -199,8 +222,6 @@ function AzathothDeckNormal() {
     deck = stage3.concat(stage2, stage1);
     // console.log(deck)
 }
-AzathothDeckNormal();
-
 function CthulthuDeckNormal() {
     let greenTotal = 4;
     let brownTotal = 9;
@@ -219,8 +240,6 @@ function CthulthuDeckNormal() {
     // console.log(deck)
 
 }
-CthulthuDeckNormal();
-
 function IogSothothDeckNormal() {
     let greenTotal = 5;
     let brownTotal = 9;
@@ -239,8 +258,6 @@ function IogSothothDeckNormal() {
     // console.log(deck)
 
 }
-IogSothothDeckNormal();
-
 function ShubNiggurathDeckNormal() {
     let greenTotal = 6;
     let brownTotal = 8;
@@ -259,7 +276,6 @@ function ShubNiggurathDeckNormal() {
     // console.log(deck)
 
 }
-ShubNiggurathDeckNormal();
 
 
 
@@ -287,8 +303,6 @@ function AzathothDeckEasy() {
     // console.log(deck)
 
 }
-AzathothDeckEasy();
-
 function CthulthuDeckEasy() {
     let greenTotal = 4;
     let brownTotal = 9;
@@ -311,8 +325,6 @@ function CthulthuDeckEasy() {
     //console.log(deck)
 
 }
-CthulthuDeckEasy();
-
 function IogSothothDeckEasy() {
     let greenTotal = 5;
     let brownTotal = 9;
@@ -335,8 +347,6 @@ function IogSothothDeckEasy() {
     // console.log(deck)
 
 }
-IogSothothDeckEasy();
-
 function ShubNiggurathDeckEasy() {
     let greenTotal = 6;
     let brownTotal = 8;
@@ -359,7 +369,6 @@ function ShubNiggurathDeckEasy() {
     // console.log(deck)
 
 }
-ShubNiggurathDeckEasy();
 
 
 
@@ -387,8 +396,6 @@ function AzathothDeckHard() {
     //console.log(deck)
 
 }
-AzathothDeckHard();
-
 function CthulthuDeckHard() {
     let greenTotal = 4;
     let brownTotal = 9;
@@ -411,8 +418,6 @@ function CthulthuDeckHard() {
     //console.log(deck)
 
 }
-CthulthuDeckHard();
-
 function IogSothothDeckHard() {
     let greenTotal = 5;
     let brownTotal = 9;
@@ -435,8 +440,6 @@ function IogSothothDeckHard() {
     //console.log(deck)
 
 }
-IogSothothDeckHard();
-
 function ShubNiggurathDeckHard() {
     let greenTotal = 6;
     let brownTotal = 8;
@@ -459,7 +462,6 @@ function ShubNiggurathDeckHard() {
     //console.log(deck)
 
 }
-ShubNiggurathDeckHard();
 
 
 // ОЧЕНЬ ЛЁГКИЙ УРОВЕНЬ //
@@ -489,8 +491,6 @@ function AzathothDeckExtraEasy() {
     //console.log(deck)
 
 }
-AzathothDeckExtraEasy();
-
 function CthulthuDeckExtraEasy() {
     let greenTotal = 4;
     let brownTotal = 9;
@@ -515,8 +515,6 @@ function CthulthuDeckExtraEasy() {
     //console.log(deck)
 
 }
-CthulthuDeckExtraEasy();
-
 function IogSothothDeckExtraEasy() {
     let greenTotal = 5;
     let brownTotal = 9;
@@ -541,8 +539,6 @@ function IogSothothDeckExtraEasy() {
     //console.log(deck)
 
 }
-IogSothothDeckExtraEasy();
-
 function ShubNiggurathDeckExtraEasy() {
     let greenTotal = 6;
     let brownTotal = 8;
@@ -568,7 +564,6 @@ function ShubNiggurathDeckExtraEasy() {
     //console.log(deck)
 
 }
-ShubNiggurathDeckExtraEasy();
 
 
 // ОЧЕНЬ СЛОЖНЫЙ УРОВЕНЬ //
@@ -597,8 +592,6 @@ function AzathothDeckExtraHard() {
     //console.log(deck)
 
 }
-AzathothDeckExtraHard();
-
 function CthulthuDeckExtraHard() {
     let greenTotal = 4;
     let brownTotal = 9;
@@ -623,8 +616,6 @@ function CthulthuDeckExtraHard() {
     //console.log(deck)
 
 }
-CthulthuDeckExtraHard();
-
 function IogSothothDeckExtraHard() {
     let greenTotal = 5;
     let brownTotal = 9;
@@ -649,15 +640,13 @@ function IogSothothDeckExtraHard() {
     //console.log(deck)
 
 }
-IogSothothDeckExtraHard();
-
 function ShubNiggurathDeckExtraHard() {
     let greenTotal = 6;
     let brownTotal = 8;
     let blueTotal = 2;
 
-    let normalGreen = brownCards.filter( card => card.difficulty === "normal");
-    let normalBrown = brownCards.filter( card => card.difficulty === "normal");
+    let normalGreen = greenCards.filter( card => card.difficulty === "normal"); 
+    let normalBrown = brownCards.filter( card => card.difficulty === "normal"); 
 
     let sortedGreenCards = greenCards.filter( card => card.difficulty === "hard").concat(randomCards(normalGreen, 1));
     let sortedBrownCards = brownCards.filter( card => card.difficulty === "hard").concat(randomCards(normalBrown, 3));
@@ -673,11 +662,11 @@ function ShubNiggurathDeckExtraHard() {
     let stage3 = greenArray.slice(4, 6).concat(brownArray.slice(4, 8)).sort(()=>Math.random()-0.5);
 
     deck = stage3.concat(stage2, stage1);
-    //console.log(deck)
+    // console.log(deck)
+    console.log(greenArray)
+    console.log(brownArray)
 
 }
-ShubNiggurathDeckExtraHard();
-
 
 
 //аккумулирующая функция формирования колод//
@@ -702,7 +691,7 @@ function createDeck() {
             AzathothDeckExtraHard();
         }
         // console.log(deck)
-        openDeck();
+        resetDeckStyle();
         // return deck;
     })
 
@@ -724,7 +713,7 @@ function createDeck() {
             CthulthuDeckExtraHard();
         }
         // console.log(deck)
-        openDeck()
+        resetDeckStyle();
         // return deck;
     })
 
@@ -746,7 +735,7 @@ function createDeck() {
            IogSothothDeckExtraHard();
         }
         console.log(deck)
-        openDeck()
+        resetDeckStyle();
         // return deck;
     })
 
@@ -767,8 +756,8 @@ function createDeck() {
         if (e.target.classList.contains('level-5')) {
            ShubNiggurathDeckExtraHard();
         }
-        // console.log(deck)
-        openDeck()
+        console.log(deck)
+        resetDeckStyle();
         // return deck;
     })
     //console.log(deck)
@@ -778,7 +767,7 @@ function createDeck() {
 
 ////////////////////////////////////  РАСКРЫВАЕМ КОЛОДЫ КАРТ ПРИ КЛИКЕ НА РУБАШКУ ////////////////////////////////////
 
-function openDeck() {
+function resetDeckStyle() {
     FRONT.innerHTML = "";
     if (BACK.classList.contains('empty')) {
          BACK.classList.remove('empty');
@@ -787,8 +776,10 @@ function openDeck() {
     
 }
 
-    BACK.addEventListener('click', () => {
-        console.log('deck1111',deck)
+
+function openDeck() {
+        BACK.addEventListener('click', () => {
+        //console.log('deck1111',deck)
         if (deck.length > 0) {
             showNewCard();
         }
@@ -797,6 +788,7 @@ function openDeck() {
             CARDS.forEach( card => {card.style.opacity = "0"; card.style.visibility = "hidden"})
         }
         })
+}
 
 function showNewCard() {
     let currentCard = deck.pop();
@@ -805,7 +797,10 @@ function showNewCard() {
     img.classList.add('deck-card');
     //console.log('currentCard',currentCard);
     img.src = currentCard.cardFace;
+    // запускаем счетчик // 
+    createCounter(`${currentCard.color}`);
 }
+
 
 
 
@@ -814,12 +809,197 @@ function showNewCard() {
 ////////////////////////////////////  СОЗДАЕМ СЧЕТЧИК  ////////////////////////////////////
 
 
+// задаем первоначальные значения при перевороте карты //
+function fillCounterAzathoth() {
+    // обнуляем значения на всякий случай //
+    AzathothStage1.forEach( item => item.innerHTML = "");
+    AzathothStage2.forEach( item => item.innerHTML = "");
+    AzathothStage3.forEach( item => item.innerHTML = "");
+    // задаем новые значения //
+    AzathothStage1[0].innerHTML = "1"; AzathothStage1[1].innerHTML = "2"; AzathothStage1[2].innerHTML = "1";
+    AzathothStage2[0].innerHTML = "2"; AzathothStage2[1].innerHTML = "3"; AzathothStage2[2].innerHTML = "1";
+    AzathothStage3[0].innerHTML = "2"; AzathothStage3[1].innerHTML = "4"; AzathothStage3[2].innerHTML = "0";
+}
+function fillCounterCthulthu() {
+    // обнуляем значения на всякий случай //
+    CthulthuStage1.forEach( item => item.innerHTML = "");
+    CthulthuStage2.forEach( item => item.innerHTML = "");
+    CthulthuStage3.forEach( item => item.innerHTML = "");
+    // задаем новые значения //
+    CthulthuStage1[0].innerHTML = "0"; CthulthuStage1[1].innerHTML = "2"; CthulthuStage1[2].innerHTML = "2";
+    CthulthuStage2[0].innerHTML = "1"; CthulthuStage2[1].innerHTML = "3"; CthulthuStage2[2].innerHTML = "0";
+    CthulthuStage3[0].innerHTML = "3"; CthulthuStage3[1].innerHTML = "4"; CthulthuStage3[2].innerHTML = "0";
+}
+function fillCounterIogSothoth() {
+    // обнуляем значения на всякий случай //
+    IogSothothStage1.forEach( item => item.innerHTML = "");
+    IogSothothStage2.forEach( item => item.innerHTML = "");
+    IogSothothStage3.forEach( item => item.innerHTML = "");
+    // задаем новые значения //
+    IogSothothStage1[0].innerHTML = "0"; IogSothothStage1[1].innerHTML = "2"; IogSothothStage1[2].innerHTML = "1";
+    IogSothothStage2[0].innerHTML = "2"; IogSothothStage2[1].innerHTML = "3"; IogSothothStage2[2].innerHTML = "1";
+    IogSothothStage3[0].innerHTML = "3"; IogSothothStage3[1].innerHTML = "4"; IogSothothStage3[2].innerHTML = "0";
+}
+function fillCounterShubNiggurath() {
+    // обнуляем значения на всякий случай //
+    ShubNiggurathStage1.forEach( item => item.innerHTML = "");
+    ShubNiggurathStage2.forEach( item => item.innerHTML = "");
+    ShubNiggurathStage3.forEach( item => item.innerHTML = "");
+    // задаем новые значения //
+    ShubNiggurathStage1[0].innerHTML = "1"; ShubNiggurathStage1[1].innerHTML = "2"; ShubNiggurathStage1[2].innerHTML = "1";
+    ShubNiggurathStage2[0].innerHTML = "3"; ShubNiggurathStage2[1].innerHTML = "2"; ShubNiggurathStage2[2].innerHTML = "1";
+    ShubNiggurathStage3[0].innerHTML = "2"; ShubNiggurathStage3[1].innerHTML = "4"; ShubNiggurathStage3[2].innerHTML = "0";
+}
 
 
 
 
+function createCounter(currentcolor) {
+    // console.log(currentcolor);
+    
+    if (currentcolor === "green") {
+
+        if (Azathoth.classList.contains('flip-ancient')) {
+            if (AzathothGreen[0].innerHTML !== '0') {AzathothGreen[0].innerHTML = AzathothGreen[0].innerHTML - 1}
+            else {
+            if  (AzathothGreen[1].innerHTML !== '0') {AzathothGreen[1].innerHTML = AzathothGreen[1].innerHTML - 1}
+            else {
+                if (AzathothGreen[2].innerHTML !== '0') {AzathothGreen[2].innerHTML = AzathothGreen[2].innerHTML - 1}
+            }
+        }
+        }
+
+        if (Cthulthu.classList.contains('flip-ancient')) {
+            if (CthulthuGreen[0].innerHTML !== '0') {CthulthuGreen[0].innerHTML = CthulthuGreen[0].innerHTML - 1}
+            else {
+            if  (CthulthuGreen[1].innerHTML !== '0') {CthulthuGreen[1].innerHTML = CthulthuGreen[1].innerHTML - 1}
+            else {
+                if (CthulthuGreen[2].innerHTML !== '0') {CthulthuGreen[2].innerHTML = CthulthuGreen[2].innerHTML - 1}
+            }
+        }
+        }
+
+        if (IogSothoth.classList.contains('flip-ancient')) {
+            if (IogSothothGreen[0].innerHTML !== '0') {IogSothothGreen[0].innerHTML = IogSothothGreen[0].innerHTML - 1}
+            else {
+            if  (IogSothothGreen[1].innerHTML !== '0') {IogSothothGreen[1].innerHTML = IogSothothGreen[1].innerHTML - 1}
+            else {
+                if (IogSothothGreen[2].innerHTML !== '0') {IogSothothGreen[2].innerHTML = IogSothothGreen[2].innerHTML - 1}
+            }
+        }
+        }
+
+        if (ShubNiggurath.classList.contains('flip-ancient')) {
+            if (ShubNiggurathGreen[0].innerHTML !== '0') {ShubNiggurathGreen[0].innerHTML = ShubNiggurathGreen[0].innerHTML - 1}
+            else {
+            if  (ShubNiggurathGreen[1].innerHTML !== '0') {ShubNiggurathGreen[1].innerHTML = ShubNiggurathGreen[1].innerHTML - 1}
+            else {
+                if (ShubNiggurathGreen[2].innerHTML !== '0') {ShubNiggurathGreen[2].innerHTML = ShubNiggurathGreen[2].innerHTML - 1}
+            }
+        }
+        }
+    }
 
 
+    if (currentcolor === "brown") {
+
+        if (Azathoth.classList.contains('flip-ancient')) {
+            if (AzathothBrown[0].innerHTML !== '0') {AzathothBrown[0].innerHTML = AzathothBrown[0].innerHTML - 1}
+            else {
+            if  (AzathothBrown[1].innerHTML !== '0') {AzathothBrown[1].innerHTML = AzathothBrown[1].innerHTML - 1}
+            else {
+                if (AzathothBrown[2].innerHTML !== '0') {AzathothBrown[2].innerHTML = AzathothBrown[2].innerHTML - 1}
+            }
+        }
+        }
+
+        if (Cthulthu.classList.contains('flip-ancient')) {
+            if (CthulthuBrown[0].innerHTML !== '0') {CthulthuBrown[0].innerHTML = CthulthuBrown[0].innerHTML - 1}
+            else {
+            if  (CthulthuBrown[1].innerHTML !== '0') {CthulthuBrown[1].innerHTML = CthulthuBrown[1].innerHTML - 1}
+            else {
+                if (CthulthuBrown[2].innerHTML !== '0') {CthulthuBrown[2].innerHTML = CthulthuBrown[2].innerHTML - 1}
+            }
+        }
+        }
+
+        if (IogSothoth.classList.contains('flip-ancient')) {
+            if (IogSothothBrown[0].innerHTML !== '0') {IogSothothBrown[0].innerHTML = IogSothothBrown[0].innerHTML - 1}
+            else {
+            if  (IogSothothBrown[1].innerHTML !== '0') {IogSothothBrown[1].innerHTML = IogSothothBrown[1].innerHTML - 1}
+            else {
+                if (IogSothothBrown[2].innerHTML !== '0') {IogSothothBrown[2].innerHTML = IogSothothBrown[2].innerHTML - 1}
+            }
+        }
+        }
+
+        if (ShubNiggurath.classList.contains('flip-ancient')) {
+            if (ShubNiggurathBrown[0].innerHTML !== '0') {ShubNiggurathBrown[0].innerHTML = ShubNiggurathBrown[0].innerHTML - 1}
+            else {
+            if  (ShubNiggurathBrown[1].innerHTML !== '0') {ShubNiggurathBrown[1].innerHTML = ShubNiggurathBrown[1].innerHTML - 1}
+            else {
+                if (ShubNiggurathBrown[2].innerHTML !== '0') {ShubNiggurathBrown[2].innerHTML = ShubNiggurathBrown[2].innerHTML - 1}
+            }
+        }
+        }
+    }
+
+
+    if (currentcolor === "blue") {
+
+        if (Azathoth.classList.contains('flip-ancient')) {
+            if (AzathothBlue[0].innerHTML !== '0') {AzathothBlue[0].innerHTML = AzathothBlue[0].innerHTML - 1}
+            else {
+            if  (AzathothBlue[1].innerHTML !== '0') {AzathothBlue[1].innerHTML = AzathothBlue[1].innerHTML - 1}
+            else {
+                if (AzathothBlue[2].innerHTML !== '0') {AzathothBlue[2].innerHTML = AzathothBlue[2].innerHTML - 1}
+            }
+        }
+        }
+
+        if (Cthulthu.classList.contains('flip-ancient')) {
+            if (CthulthuBlue[0].innerHTML !== '0') {CthulthuBlue[0].innerHTML = CthulthuBlue[0].innerHTML - 1}
+            else {
+            if  (CthulthuBlue[1].innerHTML !== '0') {CthulthuBlue[1].innerHTML = CthulthuBlue[1].innerHTML - 1}
+            else {
+                if (CthulthuBlue[2].innerHTML !== '0') {CthulthuBlue[2].innerHTML = CthulthuBlue[2].innerHTML - 1}
+            }
+        }
+        }
+
+        if (IogSothoth.classList.contains('flip-ancient')) {
+            if (IogSothothBlue[0].innerHTML !== '0') {IogSothothBlue[0].innerHTML = IogSothothBlue[0].innerHTML - 1}
+            else {
+            if  (IogSothothBlue[1].innerHTML !== '0') {IogSothothBlue[1].innerHTML = IogSothothBlue[1].innerHTML - 1}
+            else {
+                if (IogSothothBlue[2].innerHTML !== '0') {IogSothothBlue[2].innerHTML = IogSothothBlue[2].innerHTML - 1}
+            }
+        }
+        }
+
+        if (ShubNiggurath.classList.contains('flip-ancient')) {
+            if (ShubNiggurathBlue[0].innerHTML !== '0') {ShubNiggurathBlue[0].innerHTML = ShubNiggurathBlue[0].innerHTML - 1}
+            else {
+            if  (ShubNiggurathBlue[1].innerHTML !== '0') {ShubNiggurathBlue[1].innerHTML = ShubNiggurathBlue[1].innerHTML - 1}
+            else {
+                if (ShubNiggurathBlue[2].innerHTML !== '0') {ShubNiggurathBlue[2].innerHTML = ShubNiggurathBlue[2].innerHTML - 1}
+            }
+        }
+        }
+    }
+}
+
+function deactivateStage() {
+   console.log(AzathothStage1.every(circle => {circle.innerHTML == '0'}))
+   console.log(AzathothStage1[0].innerHTML)
+   console.log(AzathothStage1[1].innerHTML)
+   console.log(AzathothStage1[2].innerHTML)
+   //console.log(state)
+//    if (state === true) { 
+//     console.log('yes!!!!')
+//     //stage1[0].classList.add('passed') 
+//}
+}
 
 // const hueta = document.getElementById('hueta2');
 // hueta.src = ancientsData[0].cardFace;
