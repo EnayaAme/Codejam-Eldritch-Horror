@@ -71,6 +71,7 @@ const ShubNiggurathBlue = document.querySelectorAll('.ShubNiggurath-blue');
 const stage1 = document.querySelectorAll('.stage-1');
 const stage2 = document.querySelectorAll('.stage-2');
 const stage3 = document.querySelectorAll('.stage-3');
+console.log(stage1[1])
 
 
 ////////////////////////////////////  ПЕРЕМЕННЫЕ  ////////////////////////////////////
@@ -799,10 +800,8 @@ function showNewCard() {
     img.src = currentCard.cardFace;
     // запускаем счетчик // 
     createCounter(`${currentCard.color}`);
+    console.log(currentCard.id)
 }
-
-
-
 
 
 
@@ -989,19 +988,48 @@ function createCounter(currentcolor) {
     }
 }
 
+let x = 0;
+let y = 0;
+const arr = [];
+
+const arr2 = [];
+
 function deactivateStage() {
-   console.log(AzathothStage1.every(circle => {circle.innerHTML == '0'}))
-   console.log(AzathothStage1[0].innerHTML)
-   console.log(AzathothStage1[1].innerHTML)
-   console.log(AzathothStage1[2].innerHTML)
-   //console.log(state)
-//    if (state === true) { 
-//     console.log('yes!!!!')
-//     //stage1[0].classList.add('passed') 
-//}
+    let temp = arr[x].map(a => +a.textContent).filter(a => a !== 0).length;
+   if (temp === 0) { 
+    arr2[x].classList.add('passed'); 
+    x = x + 1 > 2 ? 0 : x + 1; 
+
+}
 }
 
 // const hueta = document.getElementById('hueta2');
 // hueta.src = ancientsData[0].cardFace;
 // console.log(hueta);
 
+//AzathothStage1.forEach(a => {console.log(a.textContent)})
+
+document.querySelectorAll('.ancient-card').forEach((c, i) => c.onclick = () => setArr(i))
+
+function setArr(i) {
+    stage1.forEach(c => c.classList.remove('passed'))
+    stage2.forEach(c => c.classList.remove('passed'))
+    stage3.forEach(c => c.classList.remove('passed'))
+    arr.length = 0;
+    arr2.length = 0;
+    y = i;
+    x = 0;
+    arr2.push(stage1[y], stage2[y], stage3[y])
+    if (i === 0) {
+        arr.push(AzathothStage1, AzathothStage2, AzathothStage3)
+    }
+    if (i === 1) {
+        arr.push(CthulthuStage1, CthulthuStage2, CthulthuStage3)
+    }
+    if (i === 2) {
+        arr.push(IogSothothStage1, IogSothothStage2, IogSothothStage3)
+    };
+    if (i === 3) {
+        arr.push(ShubNiggurathStage1, ShubNiggurathStage2, ShubNiggurathStage3)
+    }
+}
