@@ -18,12 +18,13 @@ import blueCards from "./mythicCards/blue/index.js";
                 // переворачиваем колоду //
                 openDeck();
                 BACK.addEventListener('click', deactivateStage);
-
+                ancientCards.forEach((card, i) => card.onclick = () => setArr(i));
             }
 
 ////////////////////////////////////  КОНСТАНТЫ  ////////////////////////////////////
 
 const background = document.querySelector('.wrapper');
+const ancientCards = document.querySelectorAll('.ancient-card');
 
 const Azathoth = document.querySelector('.Azathoth');
 const AzathothLevels = document.querySelector('.Azathoth-difficulties');
@@ -800,7 +801,7 @@ function showNewCard() {
     img.src = currentCard.cardFace;
     // запускаем счетчик // 
     createCounter(`${currentCard.color}`);
-    console.log(currentCard.id)
+    console.log(currentCard)
 }
 
 
@@ -852,7 +853,7 @@ function fillCounterShubNiggurath() {
 
 
 
-
+// запускам счетчик //
 function createCounter(currentcolor) {
     // console.log(currentcolor);
     
@@ -990,12 +991,12 @@ function createCounter(currentcolor) {
 
 let x = 0;
 let y = 0;
-const arr = [];
-
+const arrAncientStages = [];
 const arr2 = [];
 
+// добавляем стили к пройденному стэйджу //
 function deactivateStage() {
-    let temp = arr[x].map(a => +a.textContent).filter(a => a !== 0).length;
+    let temp = arrAncientStages[x].map(a => +a.textContent).filter(a => a !== 0).length;
    if (temp === 0) { 
     arr2[x].classList.add('passed'); 
     x = x + 1 > 2 ? 0 : x + 1; 
@@ -1003,33 +1004,33 @@ function deactivateStage() {
 }
 }
 
-// const hueta = document.getElementById('hueta2');
-// hueta.src = ancientsData[0].cardFace;
-// console.log(hueta);
 
-//AzathothStage1.forEach(a => {console.log(a.textContent)})
 
-document.querySelectorAll('.ancient-card').forEach((c, i) => c.onclick = () => setArr(i))
 
 function setArr(i) {
-    stage1.forEach(c => c.classList.remove('passed'))
-    stage2.forEach(c => c.classList.remove('passed'))
-    stage3.forEach(c => c.classList.remove('passed'))
-    arr.length = 0;
+    stage1.forEach(stage => stage.classList.remove('passed'))
+    stage2.forEach(stage => stage.classList.remove('passed'))
+    stage3.forEach(stage => stage.classList.remove('passed'))
+    arrAncientStages.length = 0;
     arr2.length = 0;
     y = i;
     x = 0;
     arr2.push(stage1[y], stage2[y], stage3[y])
     if (i === 0) {
-        arr.push(AzathothStage1, AzathothStage2, AzathothStage3)
+        arrAncientStages.push(AzathothStage1, AzathothStage2, AzathothStage3)
     }
     if (i === 1) {
-        arr.push(CthulthuStage1, CthulthuStage2, CthulthuStage3)
+        arrAncientStages.push(CthulthuStage1, CthulthuStage2, CthulthuStage3)
     }
     if (i === 2) {
-        arr.push(IogSothothStage1, IogSothothStage2, IogSothothStage3)
+        arrAncientStages.push(IogSothothStage1, IogSothothStage2, IogSothothStage3)
     };
     if (i === 3) {
-        arr.push(ShubNiggurathStage1, ShubNiggurathStage2, ShubNiggurathStage3)
+        arrAncientStages.push(ShubNiggurathStage1, ShubNiggurathStage2, ShubNiggurathStage3)
     }
 }
+
+
+// const hueta = document.getElementById('hueta2');
+// hueta.src = ancientsData[0].cardFace;
+// console.log(hueta);
